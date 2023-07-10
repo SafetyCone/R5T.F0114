@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using R5T.T0132;
+using R5T.T0180;
 
 
 namespace R5T.F0114
@@ -14,7 +15,7 @@ namespace R5T.F0114
         /// For a <inheritdoc cref="Documentation.DotnetMajorRuntimeVersion" path="/name"/> (<see cref="Documentation.DotnetMajorRuntimeVersion"/>), and a runtimes directory path for that version, get all runtime directories for that version.
         /// </summary>
         public string[] GetRuntimeDirectoryPathsForMajorRuntime(
-            string runtimesDirectoryPath,
+            IDirectoryPath runtimesDirectoryPath,
             int majorRuntime)
         {
             var majorRuntimeAsString = majorRuntime.ToString();
@@ -22,7 +23,7 @@ namespace R5T.F0114
             var pattern = Instances.SearchPatternGenerator.AllDirectoriesStartingWith(majorRuntimeAsString);
 
             var directoryPaths = Instances.FileSystemOperator.EnumerateChildDirectoryPaths(
-                runtimesDirectoryPath,
+                runtimesDirectoryPath.Value,
                 pattern)
                 .Now();
 
@@ -56,7 +57,7 @@ namespace R5T.F0114
         /// For a <inheritdoc cref="Documentation.DotnetMajorRuntimeVersion" path="/name"/> (<see cref="Documentation.DotnetMajorRuntimeVersion"/>) and runtimes directory path for the version, determine the directory of latest runtime for that major version.
         /// </summary>
         public string DetermineLatestRuntimeDirectory(
-            string runtimesDirectoryPath,
+            IDirectoryPath runtimesDirectoryPath,
             int majorVersion)
         {
             var runtimeDirectoryPaths = this.GetRuntimeDirectoryPathsForMajorRuntime(
