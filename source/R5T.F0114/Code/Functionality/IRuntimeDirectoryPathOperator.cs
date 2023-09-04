@@ -20,7 +20,7 @@ namespace R5T.F0114
         {
             var majorRuntimeAsString = majorRuntime.ToString();
 
-            var pattern = Instances.SearchPatternGenerator.AllDirectoriesStartingWith(majorRuntimeAsString);
+            var pattern = Instances.SearchPatternGenerator.Directories_StartingWith(majorRuntimeAsString);
 
             var directoryPaths = Instances.FileSystemOperator.EnumerateChildDirectoryPaths(
                 runtimesDirectoryPath.Value,
