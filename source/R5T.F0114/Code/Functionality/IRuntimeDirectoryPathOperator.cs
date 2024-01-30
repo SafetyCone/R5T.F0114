@@ -40,7 +40,7 @@ namespace R5T.F0114
 
             foreach (var runtimeDirectoryPath in runtimeDirectoryPaths)
             {
-                var directoryName = Instances.PathOperator.GetDirectoryName(runtimeDirectoryPath);
+                var directoryName = Instances.PathOperator.Get_DirectoryName(runtimeDirectoryPath);
 
                 var version = Instances.VersionOperator.From_Major_Minor_Build(directoryName);
 
